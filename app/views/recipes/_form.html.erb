@@ -1,0 +1,64 @@
+<div class="row">
+  <div class='card col-6 d-inline-block'>
+    <div class="card-block">
+      <%= form_for @recipe do |f| %>
+        <h5>Recipe Info</h5>
+        <div class="form-group">
+          <%= f.label :name, "Recipe Name" %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :prep_time, "Prep Time (minutes)" %>
+          <%= f.number_field :prep_time, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :cook_time, "Cook Time (minutes)" %>
+          <%= f.number_field :cook_time, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :instructions %>
+          <%= f.text_area :instructions, class: "form-control", rows: 6 %>
+        </div>
+        <div class="form-group">
+          <%= f.label :url, "Link to Recipe URL" %>
+          <%= f.url_field :url, class: "form-control" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="card col-6 d-inline-block ingredient_container">
+    <div class="card-block">
+      <%= form_tag('/recipe_ingredients', method: 'post') do %>
+        <h5>Ingredients</h5>
+        <div class="form-group row ingredient_input">
+          <div class="col-2">
+            <%= label_tag('quantity') %>
+            <%= text_field_tag('quantity', nil, class: 'form-control', name: 'quantity[]') %>
+          </div>
+          <div class="col-3">
+            <%= label_tag('unit') %>
+            <%= select_tag('unit', options_for_select(['ml', 'lb']), class: 'form-control', name: 'unit[]') %>
+          </div>
+          <div class="col-5">
+            <%= label_tag('name') %>
+            <%= text_field_tag('name', nil, class: 'form-control', name: 'name[]') %>
+          </div>
+          <div class="col-2">
+            <%= label_tag('delete') %>
+            <button type="button" id="delete" class="btn btn-danger delete_ingredient" aria-label="Delete">
+              <i class="fa fa-minus-circle"></i>
+            </button>
+          </div>
+        </div>
+        <div class="form-group row mt-4 ml-1">
+            <h5 class="align-middle d-inline-block mr-3">Add Ingredient</h5>
+            <a href="#" class="btn btn-primary add_ingredient"><i class="fa fa-plus-circle"></i></a>
+        </div>
+        <a href="#" class="new_ingredient">Can't find ingredient? Add your own.</a>
+      <% end %>
+    </div>
+  </div>
+  <div class="card-block text-center">
+      <button type="button" class="btn btn-primary btn-lg submit_recipe">Create Recipe</button>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+<%= render 'shared/title', title: "Recipes" %>
+
+<% @recipes.each do |recipe| %>
+  <%= render 'recipe', recipe: recipe, action: 'index' %>
+<% end %>

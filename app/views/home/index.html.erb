@@ -1,0 +1,9 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3">Recipe Tracker</h1>
+    <p class="lead">Keep track of all your recipes and explore great meals from across the world.</p>
+    <% if !logged_in? %>
+      <%= link_to "Join Now!", register_path, class: 'btn btn-primary btn-lg join' %>
+    <% end %>
+  </div>
+</div>
